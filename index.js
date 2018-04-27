@@ -1,11 +1,19 @@
-var rect = {
- perimeter: (x,y) => (2*(x+y)),
- area: (x,y) => x*y
+var rect = require ('./rectangle')
+function solveRect(l,b) {
+    console.log("Solving for rectangle with l = "
+                + l + " and b = " + b);
+    rect(l,b, (err,rectangle) => {
+        if (err) {
+	        console.log("ERROR: ", err.message);
+	    }
+        else {
+            console.log("The area of the rectangle of dimensions l = "
+                + l + " and b = " + b + " is " + rectangle.area());
+            console.log("The perimeter of the rectangle of dimensions l = "
+                + l + " and b = " + b + " is " + rectangle.perimeter());
+        }
+    });
+    console.log("This statement after the call to rect()");
 };
-function solverect(l,b)
-{
-  console.log("solving with rectable l" + l + "and b" + b);
-  console.log(rect.perimeter(l,b));
-  console.log(rect.area(l,b));
-}
-solverect(2,4);
+solveRect(2,4);
+solveRect(13,14);
